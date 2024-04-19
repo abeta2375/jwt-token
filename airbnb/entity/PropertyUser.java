@@ -1,5 +1,6 @@
 package com.airbnb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,7 +11,7 @@ public class PropertyUser {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
     @Column(name = "last_name", nullable = false, length = 20)
@@ -19,13 +20,15 @@ public class PropertyUser {
     @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(name = "username", nullable = false, unique = true, length = 50)
+    @Column(name = "username", nullable = false, unique = true, length = 100)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, length = 200)
+    @JsonIgnore
     private String password;
 
-    @Column(name = "user_role", nullable = false)
+    @Column(name = "user_role", nullable = false, length = 20)
+    @JsonIgnore
     private String userRole;
 
     public String getUserRole() {
